@@ -19,9 +19,9 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("/{cu_id}")
-    public Customer getCustomerById(@PathVariable Long cu_id) {
-        return customerService.getCustomerById(cu_id);
+    @GetMapping("/{c_id}")
+    public Customer getCustomerById(@PathVariable Long c_id) {
+        return customerService.getCustomerById(c_id);
     }
 
     @PostMapping
@@ -29,19 +29,23 @@ public class CustomerController {
         return customerService.saveCustomer(customer);
     }
 
-    @PutMapping("/{cu_id}")
-    public Customer updateCustomer(@PathVariable Long cu_id, @RequestBody Customer customerDetails) {
-        Customer customer = customerService.getCustomerById(cu_id);
+    @PutMapping("/{c_id}")
+    public Customer updateCustomer(@PathVariable Long c_id, @RequestBody Customer customerDetails) {
+        Customer customer = customerService.getCustomerById(c_id);
         if (customer != null) {
             customer.setName(customerDetails.getName());
             customer.setEmail(customerDetails.getEmail());
+            customer.setStatus(customerDetails.getStatus());
+            customer.setAcceptedById(customerDetails.getAcceptedById());
+            customer.setUpdatedAt(customerDetails.getUpdatedAt());
+            customer.setUpdatedBy(customerDetails.getUpdatedBy());
             return customerService.saveCustomer(customer);
         }
         return null;
     }
 
-    @DeleteMapping("/{cu_id}")
-    public void deleteCustomer(@PathVariable Long cu_id) {
-        customerService.deleteCustomer(cu_id);
+    @DeleteMapping("/{c_id}")
+    public void deleteCustomer(@PathVariable Long c_id) {
+        customerService.deleteCustomer(c_id);
     }
 }

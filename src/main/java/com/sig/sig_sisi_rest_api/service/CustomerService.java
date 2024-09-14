@@ -17,15 +17,15 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public Customer getCustomerById(Long id) {
-        return customerRepository.findById(id).orElse(null);
+    public Customer getCustomerById(Long c_id) {
+        return customerRepository.findById(c_id).orElse(null);
     }
 
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 
-    public void deleteCustomer(Long cu_id) {
-        customerRepository.deleteById(cu_id);
+    public void deleteCustomer(Long c_id) {
+        customerRepository.deleteById(c_id);
     }
 }
