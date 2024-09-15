@@ -29,17 +29,17 @@ public class TransactionController {
         return transactionService.saveTransaction(transaction);
     }
 
-    @PutMapping("/{trx_id}")
-    public Transaction updateTransaction(@PathVariable Long trx_id, @RequestBody Transaction transactionDetails) {
-        Transaction transaction = transactionService.getTransactionById(trx_id);
-        if (transaction != null) {
-            transaction.setTrx_total_price(transactionDetails.getTrx_total_price());
-            transaction.setTrx_discount(transactionDetails.getTrx_discount());
-            transaction.setTrx_total_after_discount(transactionDetails.getTrx_total_after_discount());
-            return transactionService.saveTransaction(transaction);
-        }
-        return null;
-    }
+    // @PutMapping("/{trx_id}")
+    // public Transaction updateTransaction(@PathVariable Long trx_id, @RequestBody Transaction transactionDetails) {
+    //     Transaction transaction = transactionService.getTransactionById(trx_id);
+    //     if (transaction != null) {
+    //         transaction.setTrx_total_price(transactionDetails.getTrx_total_price());
+    //         transaction.setTrx_discount(transactionDetails.getTrx_discount());
+    //         transaction.setTrx_total_after_discount(transactionDetails.getTrx_total_after_discount());
+    //         return transactionService.saveTransaction(transaction);
+    //     }
+    //     return null;
+    // }
 
     @DeleteMapping("/{trx_id}")
     public void deleteTransaction(@PathVariable Long trx_id) {
